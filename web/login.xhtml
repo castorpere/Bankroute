@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/main.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.login.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend><h:outputText value="#{msg['views.login.form.legend']}" /></legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <h:messages errorClass="error" globalOnly="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.login.form.username']}" for="username"/>
+                    <div class="controls">
+                        <h:inputText id="username" value="#{userController.username}" required="true" />
+                        <h:message errorClass="error" for="username"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.login.form.password']}" for="password"/>
+                    <div class="controls">
+                        <h:inputSecret id="password" value="#{userController.password}" required="true"/>
+                        <h:message errorClass="error" for="password"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton id="submit" styleClass="btn btn-primary"
+                                       value="#{msg['views.login.form.submit']}"
+                                       action="#{userController.login}" />
+                </div>
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

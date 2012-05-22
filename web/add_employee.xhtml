@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/manager.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.add_employee.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend>
+                    <h:outputText value="#{msg['views.add_employee.form.employee.legend']}" />
+                </legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <h:messages errorClass="error" globalOnly="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.username']}" for="username"/>
+                    <div class="controls">
+                        <h:inputText id="username" value="#{employeeController.employee.username}" required="true">
+                            <f:validateLength minimum="3" maximum="20" />
+                        </h:inputText>
+                        <h:message errorClass="error" for="username" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.password']}" for="password"/>
+                    <div class="controls">
+                        <h:inputSecret id="password" value="#{employeeController.employee.password}" required="true">
+                            <f:validateLength minimum="4" maximum="20" />
+                        </h:inputSecret>
+                        <h:message errorClass="error" for="password" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.firstName']}" for="firstName"/>
+                    <div class="controls">
+                        <h:inputText id="firstName" value="#{employeeController.employee.firstName}" required="true">
+                            <f:validateLength minimum="2" maximum="20" />
+                        </h:inputText>
+                        <h:message errorClass="error" for="firstName" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.lastName']}" for="lastName"/>
+                    <div class="controls">
+                        <h:inputText id="lastName" value="#{employeeController.employee.lastName}" required="true">
+                            <f:validateLength minimum="2" maximum="20" />
+                        </h:inputText>
+                        <h:message errorClass="error" for="lastName" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.email']}" for="email"/>
+                    <div class="controls">
+                        <h:inputText id="email" value="#{employeeController.employee.email}" required="true">
+                            <f:validateLength minimum="4" maximum="50" />
+                            <f:validator validatorId="emailValidator" />
+                        </h:inputText>
+                        <h:message errorClass="error" for="email" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_employee.form.employee.dateOfBirth']}" for="dateOfBirth"/>
+                    <div class="controls">
+                        <h:inputText id="dateOfBirth" value="#{employeeController.employee.dateOfBirth}" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                            <f:validator validatorId="pastDateValidator" />
+                        </h:inputText>
+                        (dd/MM/yyyy)
+                        <h:message errorClass="error" for="dateOfBirth" />
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton id="submit" styleClass="btn btn-primary"
+                                     value="#{msg['views.add_employee.form.employee.submit']}"
+                                     action="#{employeeController.addEmployee}" />
+                </div>
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/manager.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.manager_home.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <p>
+            <h:outputText value="#{msg['views.manager_home.welcomeMessage']} #{userController.user.firstName} #{userController.user.lastName}"/>
+        </p>
+        <h:dataTable value="#{employeeController.employeesModel}" var="emp" styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{msg['views.manager_home.table.header.username']}" />
+                </f:facet>
+                ${emp.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{msg['views.manager_home.table.header.firstName']}" />
+                </f:facet>
+                ${emp.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{msg['views.manager_home.table.header.lastName']}" />
+                </f:facet>
+                ${emp.lastName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{msg['views.manager_home.table.header.email']}" />
+                </f:facet>
+                ${emp.email}
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+
+</ui:composition>

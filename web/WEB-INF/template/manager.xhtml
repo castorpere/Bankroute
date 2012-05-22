@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="main.xhtml">
+
+    <ui:define name="menu">
+        <ul class="nav">
+            <li>
+                <h:outputLink value="manager_home.xhtml">
+                    <h:outputText value="#{msg['templates.manager.menu.manager_home']}" />
+                </h:outputLink>
+            </li>
+            <li>
+                <h:outputLink value="add_employee.xhtml">
+                    <h:outputText value="#{msg['templates.manager.menu.add_employee']}" />
+                </h:outputLink>
+            </li>
+            <li>
+                <h:outputLink value="add_client.xhtml">
+                    <h:outputText value="#{msg['templates.manager.menu.add_client']}" />
+                </h:outputLink>
+            </li>
+        </ul>
+    </ui:define>
+
+</ui:composition>

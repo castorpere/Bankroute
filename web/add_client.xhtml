@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/manager.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.add_client.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend><h:outputText value="#{msg['views.add_client.form.client.legend']}" /></legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <h:messages errorClass="error" globalOnly="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" for="name"
+                                   value="#{msg['views.add_client.form.client.name']}"/>
+
+                    <div class="controls">
+                        <h:inputText id="name" value="#{clientController.client.name}" required="true" />
+                        <h:message for="name" errorClass="error" globalOnly="true"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton id="submit" styleClass="btn btn-primary"
+                                     value="#{msg['views.add_client.form.client.submit']}"
+                                     action="#{clientController.addClient}" />
+                </div>
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/employee.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.add_worktime.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend><h:outputText value="#{msg['views.add_worktime.form.worktime.legend']}"/></legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <h:messages errorClass="error" globalOnly="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_worktime.form.worktime.begin']}" for="begin"/>
+                    <div class="controls">
+                        <h:inputText id="begin" value="#{workTimeController.workTime.begin}" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText>
+                        (dd/MM/yyyy)
+                        <h:message for="begin" errorClass="error"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_worktime.form.worktime.end']}" for="end" />
+                    <div class="controls">
+                        <h:inputText id="end" value="#{workTimeController.workTime.end}" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText>
+                        (dd/MM/yyyy)
+                        <h:message for="end" errorClass="error"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel styleClass="control-label" value="#{msg['views.add_worktime.form.worktime.client']}" for="client"/>
+                    <div class="controls">
+                        <h:selectOneMenu id="client" value="#{workTimeController.workTime.client}"
+                                         converter="#{clientConverter}" required="true">
+
+                            <f:selectItems value="#{clientController.clientItems}" />
+                        </h:selectOneMenu>
+                        <h:message for="client" errorClass="error"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton id="submit" styleClass="btn btn-primary"
+                                     value="#{msg['views.add_worktime.form.worktime.submit']}"
+                                     action="#{workTimeController.addWorkTime}" />
+                </div>
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

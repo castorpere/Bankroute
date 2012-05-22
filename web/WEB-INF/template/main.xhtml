@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>Bankroute - <ui:insert name="title" /></title>
+        <meta name="author" content="@bargenson" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/style.css"/>
+    </h:head>
+
+    <h:body>
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <h:outputLink styleClass="brand" value="#">
+                        <h:outputText value="Bankroute" />
+                    </h:outputLink>
+                    <div class="nav-collapse">
+                        <ui:insert name="menu" />
+                        <h:form style="display: inline;">
+                            <ul class="nav pull-right">
+                                <li>
+                                    <h:outputLink value="login.xhtml"
+                                                  rendered="#{not userController.authenticated}">
+                                        <h:outputText value="#{msg['templates.main.menu.login']}" />
+                                    </h:outputLink>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{userController.logout}"
+                                                   rendered="#{userController.authenticated}"
+                                                   value="#{msg['templates.main.menu.logout']}" />
+                                </li>
+                            </ul>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section style="margin-top: 80px;">
+            <ui:insert name="content" />
+        </section>
+
+        <footer style="text-align: center;">
+            <em>Powered by Juvamine</em>
+        </footer>
+
+    </h:body>
+
+</html>

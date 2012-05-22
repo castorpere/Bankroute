@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/template/employee.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['views.employee_home.title']}" />
+    </ui:define>
+
+    <ui:define name="content">
+        <p>
+            <h:outputText value="#{msg['views.employee_home.welcomeMessage']} #{userController.user.firstName} #{userController.user.lastName}" />
+        </p>
+        <h:form>
+            <h:dataTable value="#{workTimeController.workTimeModel}" var="worktime" styleClass="table table-striped">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['views.employee_home.table.header.begin']}" />
+                    </f:facet>
+                    ${worktime.begin}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['views.employee_home.table.header.end']}" />
+                    </f:facet>
+                    ${worktime.end}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['views.employee_home.table.header.client']}" />
+                    </f:facet>
+                    ${worktime.client.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['views.employee_home.table.header.action']}" />
+                    </f:facet>
+                    <h:commandLink action="#{workTimeController.removeWorkTime}" value="#{msg['views.employee_home.table.action.remove']}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

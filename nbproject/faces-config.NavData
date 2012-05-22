@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="add_client.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="index.jsp" x="150" y="300" zoom="true"/>
+        <Node id="login.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="index.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="add_worktime.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="manager_home.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="add_employee.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="employee_home.xhtml" x="400" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
